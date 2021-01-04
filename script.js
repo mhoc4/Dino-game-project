@@ -18,7 +18,7 @@ function jump() {
 
   let upInterval = setInterval(() => {
     if (position >= 150) {
-      // Descendo
+
       clearInterval(upInterval);
 
       let downInterval = setInterval(() => {
@@ -31,7 +31,7 @@ function jump() {
         }
       }, 20);
     } else {
-      // Subindo
+
       position += 20;
       dino.style.bottom = position + 'px';
     }
@@ -40,7 +40,7 @@ function jump() {
 
 function createCactus() {
   const cactus = document.createElement('div');
-  let cactusPosition = 1000;
+  let cactusPosition = 1920;
   let randomTime = Math.random() * 6000;
 
   if (isGameOver) return;
@@ -51,14 +51,15 @@ function createCactus() {
 
   let leftTimer = setInterval(() => {
     if (cactusPosition < -60) {
-      // Saiu da tela
+
       clearInterval(leftTimer);
       background.removeChild(cactus);
     } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
-      // Game over
+
       clearInterval(leftTimer);
       isGameOver = true;
-      document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+      document.body.innerHTML = '<h1 class="game-over">Fim de jogo!<br>Aperte F5 para reiniciar</h1>';
+
     } else {
       cactusPosition -= 10;
       cactus.style.left = cactusPosition + 'px';
